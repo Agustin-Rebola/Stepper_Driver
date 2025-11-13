@@ -1,0 +1,4 @@
+../Core/Inc/as5600.h:48:21:as5600_ticks_to_deg	16	static
+../Core/Src/test.c:16:6:test_status	24	static
+../Core/Src/test.c:24:6:test_init	4	static
+../Core/Src/test.c:30:6:test_loop	16	static

@@ -1,0 +1,6 @@
+#pragma once
+#include "main.h"       // for HAL includes, USB, etc.
+
+void test_init(void);
+void test_loop(void);
+void test_status(void);
