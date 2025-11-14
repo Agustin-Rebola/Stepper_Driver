@@ -3,4 +3,4 @@
 
 void test_init(void);
 void test_loop(void);
-void test_status(void);
+void test_status(uint8_t st);

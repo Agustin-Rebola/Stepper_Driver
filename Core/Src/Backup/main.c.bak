@@ -26,6 +26,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "test.h"
+#include "scheduler.h"
+#include "angle.h"
+#include "globals.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +51,9 @@
 /* USER CODE BEGIN PV */
 volatile uint16_t angle_ticks = 0;
 volatile float angle_deg = 0;
+volatile float angle_deg_prev = 0;
+volatile float angular_velocity = 0;
+volatile uint8_t tim2_flag = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -100,13 +106,16 @@ int main(void)
   scheduler_init();
 
   //ADD FUNCTIONS TO SCHEDULER
-  scheduler_add(test_loop, 10);
-  scheduler_add(test_status, 500);
+  scheduler_add(measure_angle, 1);
+
+  HAL_TIM_Base_Start_IT(&htim2);
+  scheduler_start();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1){
+
 
     /* USER CODE END WHILE */
 
@@ -156,12 +165,13 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 //holds a flag that indicates when the timer counted to the set time
-uint8_t tim2_flag = 0;
+
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim->Instance == TIM2)
 		tim2_flag = 1;
+	HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 }
 /* USER CODE END 4 */
 

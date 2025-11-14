@@ -3,5 +3,8 @@
 #pragma once
 #include <stdint.h>
 
-extern uint32_t angle;
-extern uint32_t velocity;
+extern volatile uint16_t angle_ticks;
+extern volatile float angle_deg;
+extern volatile float angle_deg_prev;
+extern volatile float angular_velocity;	//deg/s
+

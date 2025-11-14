@@ -1,0 +1,4 @@
+../Core/Inc/as5600.h:48:21:as5600_ticks_to_deg	16	static
+../Core/Src/angle.c:17:6:uart_send_angle	56	static
+../Core/Src/angle.c:24:6:uart_send_velocity	56	static
+../Core/Src/angle.c:32:6:measure_angle	96	static
